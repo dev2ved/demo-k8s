@@ -13,7 +13,7 @@ var handleRequest = function(request, response) {
   console.log("Host:", host, "| Total requests:", ++requests, "| Uptime:", (new Date() - startTime)/1000, "s");
 }
 var www = http.createServer(handleRequest);
-www.listen(8080,function () {
+www.listen(8092,function () {
     startTime = new Date();
 	host = process.env.HOSTNAME;
     console.log ("Kubernetes App started:", startTime, "| Running on:" , host, "\n");

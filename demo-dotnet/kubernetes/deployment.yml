@@ -13,4 +13,4 @@ spec:
       - name: demo-dotnet
         image: demo-dotnet:v1
         ports:
-        - containerPort: 8091
+        - containerPort: 80
