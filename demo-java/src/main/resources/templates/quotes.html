@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Kubernetes App: Quotes</title>
+</head>
+<body>
+    <h1>Quotes of the day</h1>
+    <div th:if="${not #lists.isEmpty(quotes)}">
+        <ul th:each="quote : ${quotes}">
+            <li th:text="${quote.message} + ' - ' + ${quote.author}"></li>
+        </ul>
+    </div>
+</body>
+</html>
