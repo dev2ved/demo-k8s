@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-dotnet-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-dotnet
+    spec:
+      containers:
+      - name: demo-dotnet
+        image: demo-dotnet:v1
+        ports:
+        - containerPort: 8091

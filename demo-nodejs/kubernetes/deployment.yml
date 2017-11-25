@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-nodejs-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-nodejs
+    spec:
+      containers:
+      - name: demo-nodejs
+        image: demo-nodejs:v1
+        ports:
+        - containerPort: 8092
