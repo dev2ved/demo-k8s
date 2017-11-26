@@ -1,12 +1,12 @@
-# demo-java
+# demo-dotnet
 This module is used to get one's feet wet with K8s.
-It contains the steps to build and run the demo-java app. 
+It contains the steps to build and run the demo-dotnet app. 
 It will look at how to test, expose, scale, update and rollback.
 
 These commands were run using Ubuntu running on VirtualBox. Note: sudo will be used to execute commands with elevated privileges.
 
 ## Steps for pre-built environment
-Open a new terminal and cd to demo-java/
+Open a new terminal and cd to demo-dotnet/
 ### 1) Verify Minikube is 'Running'
 Check the minikube status (Minikube: Running; kubectl: Currently Configured):
 ```
@@ -19,9 +19,9 @@ sudo minikube start --vm-driver=virtualbox
 ```
 
 ### 2) Check image exists
-Check demo-java:v1 image exists:
+Check demo-dotnet:v1 image exists:
 ```
-docker images demo-java:v1
+docker images demo-dotnet:v1
 ```
 
 ### 3) Creating a deployment
@@ -74,7 +74,7 @@ sudo kubectl get services
 
 Test service:
 ```
-sudo minikube service demo-java
+sudo minikube service demo-dotnet
 ```
 
 ### 6) Scaling the App
@@ -86,7 +86,7 @@ sudo kubectl get pods
 
 Scale the application to have 3 replicas:
 ```
-sudo kubectl scale deployments/demo-java-deployment --replicas=3
+sudo kubectl scale deployments/demo-dotnet-deployment --replicas=3
 ```
 
 Verify results:
@@ -97,21 +97,21 @@ sudo kubectl get pods -o wide
 
 Scale the application back down to 2:
 ```
-sudo kubectl scale deployments/demo-java-deployment --replicas=2
+sudo kubectl scale deployments/demo-dotnet-deployment --replicas=2
 ```
 
 ### 6) Update code and roll in the update
-Make a change - add a new quote in QuotesService.java then build:
+Make a change - e.g. add a paragraph with your favourite quote to Index.cshtml:
 ```
-sudo ./mvnw clean install
+gedit Pages/Index.cshtml
 ```
 
 Create a new image and tag with v2:
 ```
-docker build -t demo-java:v2 .
+docker build -t demo-dotnet:v2 .
 ```
 
-Update the deployment.yml file and set image to demo-java:v2
+Update the deployment.yml file and set image to demo-dotnet:v2
 ```
 # use any text editor to update the file
 gedit kubernetes/deployment.yml
@@ -124,22 +124,22 @@ sudo kubectl replace -f kubernetes/deployment.yml
 
 Verify results:
 ```
-sudo kubectl rollout status deployments/demo-java-deployment
+sudo kubectl rollout status deployments/demo-dotnet-deployment
 
-sudo minikube service demo-java
+sudo minikube service demo-dotnet
 ```
 
 ### 7) Rollback the changes
 Revert back to the previous deployment:
 ```
-sudo kubectl rollout undo deployments/demo-java-deployment
+sudo kubectl rollout undo deployments/demo-dotnet-deployment
 ```
 
 Verify results:
 ```
-sudo kubectl rollout status deployments/demo-java-deployment
+sudo kubectl rollout status deployments/demo-dotnet-deployment
 
-sudo minikube service demo-java
+sudo minikube service demo-dotnet
 ```
 
 ### x) Dashboard
@@ -151,9 +151,9 @@ sudo minikube dashboard
 ### x) Clean up resources
 If you decide to remove the deployment and services, then run:
 ```
-sudo kubectl delete service demo-java
+sudo kubectl delete service demo-dotnet
 
-sudo kubectl delete deployment demo-java-deployment
+sudo kubectl delete deployment demo-dotnet-deployment
 ```
 
 Stop Minikube:
