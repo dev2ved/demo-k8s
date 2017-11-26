@@ -100,7 +100,7 @@ Scale the application back down to 2:
 sudo kubectl scale deployments/demo-java-deployment --replicas=2
 ```
 
-### 6) Update code and roll in the update
+### 7) Update code and roll in the update
 Make a change - add a new quote in QuotesService.java then build:
 ```
 sudo ./mvnw clean install
@@ -129,7 +129,7 @@ sudo kubectl rollout status deployments/demo-java-deployment
 sudo minikube service demo-java
 ```
 
-### 7) Rollback the changes
+### 8) Rollback the changes
 Revert back to the previous deployment:
 ```
 sudo kubectl rollout undo deployments/demo-java-deployment
@@ -142,13 +142,13 @@ sudo kubectl rollout status deployments/demo-java-deployment
 sudo minikube service demo-java
 ```
 
-### x) Dashboard
+### 9) Dashboard
 Close your web browser and execute the below command:
 ```
 sudo minikube dashboard
 ```
 
-### x) Clean up resources
+### 10) Clean up resources
 If you decide to remove the deployment and services, then run:
 ```
 sudo kubectl delete service demo-java
